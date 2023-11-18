@@ -6,11 +6,16 @@ import SpinnerComponent from "@/Components/SpinnerComponent.vue";
 
 
 const form = useForm({
-    nombres: 'Geiler ELias',
+/*   nombres: 'Geiler ELias',
     apellidos: 'Radillo Sarmiento',
     email: 'geilerelias@gmail.com',
     asunto: 'Ejemplo de mensaje',
-    mensaje: 'Este es un ejemplo de mensaje para probar funcionamiento de pagina web',
+    mensaje: 'Este es un ejemplo de mensaje para probar funcionamiento de pagina web',*/
+    nombres: '',
+    apellidos: '',
+    email: '',
+    asunto: '',
+    mensaje:''
 });
 
 const nameRules = [
