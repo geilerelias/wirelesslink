@@ -287,15 +287,16 @@ const pilaresCorporativos = [
                                     <v-col class="v-col-12">
 
                                         <h6 class="text-body-1 text-muted font-weight-regular">Email</h6>
-                                        <div class="d-flex">
+                                        <div class="d-flex align-center">
                                             <a class="text-decoration-none" href="mailto:contacto@wirelesslink.com.co"
                                                target="_blank">
                                                 <v-icon color="white">mdi-email</v-icon>
                                             </a>
 
-                                            <h5 class="font-weight-medium text-h5 text-white ml-2">
+                                            <a class="font-weight-medium text-h5 text-white ml-2"
+                                               href="mailto:contacto@wirelesslink.com.co">
                                                 contacto@wirelesslink.com.co
-                                            </h5>
+                                            </a>
                                         </div>
                                     </v-col>
                                     <v-col class="v-col-12">

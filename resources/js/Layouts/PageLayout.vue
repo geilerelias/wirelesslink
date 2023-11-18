@@ -4,6 +4,8 @@ import PageHeader from "@/Base/PageHeader.vue";
 import PageFooter from "@/Base/PageFooter.vue";
 import {Head} from "@inertiajs/vue3";
 import PageDrawer from "@/Base/PageDrawer.vue";
+import {onMounted} from "vue";
+import AOS from "aos";
 
 function scrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -12,6 +14,10 @@ function scrollToTop() {
 defineProps({
     title: String,
 });
+
+onMounted(() => {
+    AOS.init();
+})
 </script>
 
 <template>

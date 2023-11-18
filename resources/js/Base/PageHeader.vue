@@ -4,7 +4,7 @@ import {useLinksStore} from "../../stores/links";
 import {useDisplay} from 'vuetify'
 import Logo from "./../Components/Logo.vue";
 import name from "../../images/logo/name-primary.png"
-import {Link} from '@inertiajs/vue3'
+import {Link} from '@inertiajs/vue3';
 import {computed, onMounted, onUnmounted, ref} from "vue";
 /*import SettingsDropdown from "../Components/SettingsDropdown.vue";*/
 
@@ -96,17 +96,21 @@ const back = () => {
             </div>
         </Link>
         <v-spacer></v-spacer>
-        <v-btn :color="isTransparent && isHomePage ? 'white' : 'primary'"
-               class="rounded-md d-md-flex d-none white-outline"
-               size="large"
-               variant="outlined">
-            <v-icon class="mr-1" icon="mdi-account-circle"></v-icon>
-            login
-        </v-btn>
+        <Link :href="route('login')">
+            <v-btn :color="isTransparent && isHomePage ? 'white' : 'primary'"
+                   class="rounded-md d-md-flex d-none white-outline"
+                   size="large"
+                   variant="outlined">
+                <v-icon class="mr-1" icon="mdi-account-circle"></v-icon>
+                login
+            </v-btn>
+        </Link>
 
-        <v-btn class="bg-secondary bg-primary ms-3 sticky-border d-lg-flex d-none" color="white" size="large">
-            register
-        </v-btn>
+        <Link :href="route('register')">
+            <v-btn class="bg-secondary bg-primary ms-3 sticky-border d-lg-flex d-none" color="white" size="large">
+                register
+            </v-btn>
+        </Link>
         <v-btn
             class="d-md-none d-flex drawer-icon no-effect ml-auto mr-0"
             icon tile
