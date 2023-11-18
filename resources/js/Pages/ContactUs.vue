@@ -57,13 +57,13 @@ const enviarFormulario = () => {
                             class="text-h4 font-weight-bold text-dark text-primary mb-10 aos-init aos-animate"
                             data-aos="fade-up"
                             data-aos-delay="200" data-aos-duration="1000">
-                                <span class="text-secondary  font-weight-light">
-                                    COLOCATE EN
-                                </span>
+                            <span class="text-secondary  text-uppercase font-weight-light">
+                                Ubicación y
+                            </span>
                             <br>
-                            <span class="ml-16 font-weight-bold font-weight-black">
-                                    CONTACTO CON NOSOTROS
-                                </span>
+                            <span class="ml-16 text-uppercase font-weight-bold font-weight-black">
+                                Contacto
+                            </span>
                         </h2>
                         <v-row class="v-row">
                             <v-col class="v-col-md-5 v-col-12">

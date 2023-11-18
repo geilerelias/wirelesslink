@@ -24,20 +24,26 @@ const clientes = [
             <v-container>
                 <div class="pb-md-15 pb-0 ">
                     <v-container class="">
-                        <v-card :src="bg1"
-                                class="elevation-0 mt-5   px-sm-8  rounded-md"
+                        <v-card class="elevation-0 mt-5   px-sm-8  rounded-md"
                                 variant="elevated">
-                            <v-img :aspect-ratio="16/9" :src="bg1"
-                                   class="rounded-xl" cover=""
-                                   gradient="to top right, rgb(21 92 138 / 75%), rgb(4 16 35 / 82%)" width="100%">
-                                <v-row class="align-end  fill-height justify-space-between px-md-7 px-0 py-md-10 py-0">
+                            <v-img :aspect-ratio="16/9" :src="bg1" class="rounded-xl"
+                                   cover="" gradient="to top right, rgb(21 92 138 / 75%), rgb(4 16 35 / 82%)"
+                                   height="50vh" width="100%">
+                                <v-row class="align-center  fill-height justify-space-between px-md-7 px-0 py-md-10 py-0">
                                     <div class="v-col-md-7 v-col-12 text-md-left text-center">
-                                        <h1
-                                            class="text-h3 font-weight-bold font-weight-black mb-7 text-white lh-60 "
+                                        <h2
+                                            class="text-h5 text-sm-h4 text-md-h3 font-weight-bold text-dark text-white mb-10 aos-init aos-animate"
                                             data-aos="fade-up"
                                             data-aos-delay="200" data-aos-duration="1000">
-                                            Nuestros clientes
-                                        </h1>
+                                            <span class="text-secondary  text-uppercase font-weight-light">
+                                                Nuestros
+                                            </span>
+                                            <br>
+                                            <span class="ml-sm-16 text-uppercase font-weight-bold font-weight-black">
+                                                clientes
+                                            </span>
+
+                                        </h2>
                                         <v-btn
                                             class="bg-secondary rounded-md  px-10 aos-init aos-animate"
                                             data-aos="fade-up"
