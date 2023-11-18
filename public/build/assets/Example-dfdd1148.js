@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{o as t,f as s,a as o}from"./app-863f6a58.js";const c={},r=o("iframe",{src:"https://www.speedtest.net"},null,-1),n=[r];function a(_,f){return t(),s("div",null,n)}const i=e(c,[["render",a]]);export{i as default};

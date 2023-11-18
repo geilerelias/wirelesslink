@@ -19,7 +19,9 @@ import services71 from "../../images/services/services-7 (1).png";
 import services72 from "../../images/services/services-7 (2).png";
 import bgWirelesslink from "../../images/bg/bg-pexels-fauxels.jpg";
 import contact from "../../images/bg/bg-contact.jpg";
+import {useDisplay} from "vuetify";
 
+const {mobile} = useDisplay()
 
 const listAvatar = [user1, user2, user3, user4, user5];
 const services = [
@@ -136,8 +138,8 @@ const dialog = ref(false)
                     <v-col class="v-col-md-6 v-col-12">
                         <div class="text-left position-relative about-content">
                             <h2
+                                :data-aos="mobile?'':'fade-up'"
                                 class="text-h4 font-weight-bold text-dark text-primary mb-4 aos-init aos-animate"
-                                data-aos="fade-up"
                                 data-aos-delay="200" data-aos-duration="1000">
                                 <span class="text-secondary  font-weight-light">
                                     Nuestros
@@ -147,8 +149,9 @@ const dialog = ref(false)
                                     Servicios
                                 </span>
                             </h2>
-                            <p class="text-body-1 text-justify text-muted bg-surface position-relative z-index1 aos-init aos-animate"
-                               data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                            <p :data-aos="mobile?'':'fade-up'"
+                               class="text-body-1 text-justify text-muted bg-surface position-relative z-index1 aos-init aos-animate"
+                               data-aos-delay="400" data-aos-duration="1000">
                                 En wirelesslink, nos enorgullece ofrecer una gama completa de servicios diseñados para
                                 satisfacer tus necesidades más exigentes. Desde soluciones tecnológicas personalizadas
                                 hasta asesoramiento estratégico, nuestro compromiso es brindarte resultados
@@ -247,7 +250,7 @@ const dialog = ref(false)
                 <v-container>
                     <v-row>
                         <v-col class="v-col-md-5 v-col-12">
-                            <div class="service-speciality-content mb-13 mb-lg-0" data-aos="fade-up"
+                            <div :data-aos="mobile?'':'fade-up'" class="service-speciality-content mb-13 mb-lg-0"
                                  data-aos-delay="200" data-aos-duration="1000">
                                 <h2 class="text-primary mb-4">
                                     <span v-if="service.title1" class="text-secondary  text-h5 font-weight-light">
@@ -304,12 +307,13 @@ const dialog = ref(false)
                         <v-row class="v-row justify-center">
                             <div class="v-col-md-7 v-col-12">
                                 <h2
+                                    :data-aos="mobile?'':'fade-right'"
                                     class="text-h2 text-center text-dark mb-4 aos-init aos-animate"
-                                    data-aos="fade-right"
                                     data-aos-delay="200" data-aos-duration="1000">
                                     Proceso de trabajo
                                 </h2>
-                                <p class="text-body-1 text-center text-muted aos-init aos-animate" data-aos="fade-left"
+                                <p :data-aos="mobile?'':'fade-left'"
+                                   class="text-body-1 text-center text-muted aos-init aos-animate"
                                    data-aos-delay="200" data-aos-duration="1000">
                                     Te ofrecemos una nueva generación de tareas.
                                     y proyecto
@@ -318,7 +322,8 @@ const dialog = ref(false)
                             <v-col class="v-col-12 mt-8">
                                 <v-row>
                                     <v-col v-for="process in processList" class="v-col-sm-6 v-col-md-3 v-col-12">
-                                        <div class="aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+                                        <div :data-aos="mobile?'':'fade-up'" class="aos-init aos-animate"
+                                             data-aos-delay="200"
                                              data-aos-duration="1000">
                                             <div class="text-sm-left text-center">
                                                 <v-avatar

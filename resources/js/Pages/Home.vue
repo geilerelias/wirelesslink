@@ -1,7 +1,9 @@
 <script setup>
 
 import PageLayout from "@/Layouts/PageLayout.vue";
+import {useDisplay} from "vuetify";
 import {onMounted} from "vue";
+
 import AOS from "aos";
 import user1 from './../../images/avatar/user-1.png'
 import user2 from './../../images/avatar/user-2.png'
@@ -16,6 +18,9 @@ import lazyBg1 from './../../images/bg/lazy-bg-1.png'
 import bg2 from './../../images/bg/bg-2.png'
 import name from "../../images/logo/name.png";
 import logo from "../../images/logo/logo.png";
+
+
+const {mobile} = useDisplay()
 
 onMounted(() => {
     AOS.init();
@@ -55,10 +60,11 @@ const pilaresCorporativos = [
             <v-row class="d-flex fill-height align-center justify-center">
                 <v-col class="d-flex justify-center">
                     <div class="d-flex align-center flex-column mt-12">
-                        <img :src="logo" alt="logo" data-aos="fade-up"
+                        <img :data-aos="mobile?'':'fade-up'" :src="logo" alt="logo"
                              data-aos-delay="200" data-aos-duration="1000" style="height: 300px;"/>
-                        <img :src="name" alt="logo name" class="h-14 mt-4" data-aos="fade-down"
-                             data-aos-delay="200" data-aos-duration="1000" style="height: 100px;"/>
+                        <img :data-aos="mobile?'':'fade-down'" :src="name" alt="logo name" class="h-14 mt-4"
+                             data-aos-delay="200" data-aos-duration="1000"
+                             style="height: 100px;object-fit: contain;width: 80vw"/>
                     </div>
                 </v-col>
             </v-row>
@@ -66,11 +72,11 @@ const pilaresCorporativos = [
         </v-img>
 
 
-        <section class="pt-md-16 pt-8 pb-md-12 pb-8 mt-95">
+        <section class="pt-md-16 pt-8 pb-md-12 pb-8">
             <v-container class="">
                 <v-row class="align-center justify-space-between pt-md-7">
-                    <v-col class="v-col-md-5 v-col-12  aos-init aos-animate"
-                           data-aos="fade-right" data-aos-delay="200"
+                    <v-col :data-aos="mobile?'':'fade-right'"
+                           class="v-col-md-5 v-col-12" data-aos-delay="200"
                            data-aos-duration="1000">
                         <div class="d-flex align-center mb-6">
                             <span class="bg-success pa-2 rounded-circle mr-2"></span>
@@ -136,30 +142,31 @@ const pilaresCorporativos = [
                             </p>
                         </div>
                     </v-col>
-                    <v-col class="v-col-md-6 v-col-12">
+                    <v-col v-if="!mobile" class="v-col-md-6 v-col-12">
                         <div class="mt-12 rounded-md d-flex justify-center text-center ">
 
-                            <div class="position-relative text-center text-lg-start mt-12"
-                                 data-aos="fade-left"
+                            <div :data-aos="mobile?'':'fade-left'"
+                                 class="position-relative text-center text-lg-start mt-12"
                             >
                                 <img
+                                    :data-aos="mobile?'':'fade-down-left'"
                                     :src="bg3"
                                     alt="shape"
                                     class="img-fluid position-absolute top-0 right-0 mt-n10 mr-n16 h-25 rounded-lg z-index2"
-                                    data-aos="fade-down-left" data-aos-delay="200"
+                                    data-aos-delay="200"
                                     data-aos-duration="1000"/>
 
-                                <div class="position-relative z-index1 rounded-xl overflow-hidden"
-                                     data-aos="zoom-in"
+                                <div :data-aos="mobile?'':'zoom-in'"
+                                     class="position-relative z-index1 rounded-xl overflow-hidden"
                                      data-aos-delay="200"
                                      data-aos-duration="1000">
                                     <img :src="bg11"
                                          alt="banner" class="img-fluid rounded-lg"/>
                                 </div>
 
-                                <img :src="bg22" alt="bg"
+                                <img :data-aos="mobile?'':'fade-down-right'" :src="bg22"
+                                     alt="bg"
                                      class="img-fluid position-absolute bottom-0 left-0 mb-n12 ml-n12 h-25 rounded-lg z-index2"
-                                     data-aos="fade-down-right"
                                      data-aos-delay="200"
                                      data-aos-duration="1000"/>
                             </div>
@@ -172,28 +179,30 @@ const pilaresCorporativos = [
 
         <div class="bg-gray-100 py-md-15 py-8">
             <div class="py-md-15 py-sm-8">
-                <div class="v-container v-locale--is-ltr">
-                    <div class="v-row justify-center">
-                        <div class="v-col-sm-8 v-col-12">
+                <v-container>
+                    <v-row class="justify-center">
+                        <v-col class="v-col-sm-8 v-col-12">
                             <div class="text-center">
-                                <div class="d-flex align-center mb-5 justify-center aos-init aos-animate"
-                                     data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000"><span
+                                <div :data-aos="mobile?'':'fade-right'"
+                                     :data-aos-delay="200" class="d-flex align-center mb-5 justify-center "
+                                     data-aos-duration="1000"><span
                                     class="bg-success pa-2 rounded-circle mr-2"></span><h6
                                     class="text-subtitle-1 text-dark font-weight-bold">pilares corporativos</h6></div>
-                                <h2 class="text-h4 font-weight-bold text-dark mb-md-12 mb-6 aos-init aos-animate"
-                                    data-aos="fade-left"
+                                <h2 :data-aos="mobile?'':'fade-left'"
+                                    class="text-h4 font-weight-bold text-dark mb-md-12 mb-6"
                                     data-aos-delay="200" data-aos-duration="1000">
                                     La esencia de nuestra misión se encuentra en los pilares que sustentan cada aspecto
                                 </h2>
                             </div>
-                        </div>
-                    </div>
+                        </v-col>
+                    </v-row>
                     <v-row class=" justify-center">
 
                         <v-col v-for="(pilar) in pilaresCorporativos" class="v-col-sm-6 v-col-md-4 v-col-12">
                             <v-card
+                                :data-aos="mobile?'':'fade-up'"
                                 class=" elevation-0  text-center py-md-15 py-6 px-md-8 px-4 rounded-md aos-init aos-animate"
-                                data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000"><!---->
+                                data-aos-delay="200" data-aos-duration="1000"><!---->
 
                                 <v-avatar color="secondary" size="68">
                                     <v-icon :icon="pilar.icon" size="40">
@@ -210,7 +219,7 @@ const pilaresCorporativos = [
                             </v-card>
                         </v-col>
                     </v-row>
-                </div>
+                </v-container>
             </div>
         </div>
 
@@ -221,7 +230,7 @@ const pilaresCorporativos = [
                     <v-row class="justify-center">
                         <v-col class="v-col-md-8 v-col-12">
                             <div class="text-center">
-                                <div class="rounded-lg d-flex justify-center" data-aos="zoom-out-up"
+                                <div :data-aos="mobile?'':'zoom-out-up'" class="rounded-lg d-flex justify-center"
                                      data-aos-delay="200"
                                      data-aos-duration="1000">
                                     <img :src="bg2" alt=""
@@ -252,8 +261,8 @@ const pilaresCorporativos = [
 
         <div class="bg-primary py-md-15 py-8">
             <div class="py-md-8 py-sm-5">
-                <v-container class="v-container v-locale--is-ltr">
-                    <v-row class="v-row align-center justify-space-between">
+                <v-container class="">
+                    <v-row class="align-center justify-space-between">
                         <v-col class="v-col-md-5 v-col-12">
                             <div>
                                 <div class="d-flex align-center mb-5">
@@ -318,81 +327,80 @@ const pilaresCorporativos = [
                         </v-col>
 
                         <v-col class="v-col-md-5 v-col-12">
-                            <div class="position-relative">
-                                <v-card class="elevation-0  position-relative rounded-md z-index1"
-                                        variant="elevated">
-                                    <div class="pa-md-11 pa-sm-8 pa-4">
-                                        <h4
-                                            class="text-dark text-h4 font-weight-bold mb-7">
-                                            Iniciar el proyecto
-                                        </h4>
-                                        <v-form class="project-form" novalidate="">
-                                            <v-row class="v-row">
-                                                <v-col class="v-col-sm-6 v-col-12 pb-1">
+                            <v-card class="elevation-0   rounded-md"
+                                    variant="elevated">
+                                <div class="pa-md-11 pa-sm-8 pa-4">
+                                    <h4
+                                        class="text-dark text-h4 font-weight-bold mb-7">
+                                        Iniciar el proyecto
+                                    </h4>
+                                    <v-form class="project-form" novalidate="">
+                                        <v-row class="v-row">
+                                            <v-col class="v-col-sm-6 v-col-12 pb-1">
 
-                                                    <v-text-field density="comfortable"
-                                                                  label="Nombres" variant="outlined">
+                                                <v-text-field density="comfortable"
+                                                              label="Nombres" variant="outlined">
 
-                                                    </v-text-field>
-                                                </v-col>
-                                                <v-col class="v-col-sm-6 v-col-12 pb-1">
-                                                    <v-text-field density="comfortable"
-                                                                  label="Apellidos" variant="outlined">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col class="v-col-sm-6 v-col-12 pb-1">
+                                                <v-text-field density="comfortable"
+                                                              label="Apellidos" variant="outlined">
 
-                                                    </v-text-field>
-                                                </v-col>
-                                                <v-col class="v-col-sm-12 v-col-12 pb-1">
-                                                    <v-text-field
-                                                        color="primary"
-                                                        density="comfortable"
-                                                        label="Email"
-                                                        variant="outlined"
-                                                    ></v-text-field>
-                                                </v-col>
-                                                <v-col class="v-col-sm-12 v-col-12 pb-1">
-                                                    <v-text-field
-                                                        color="primary"
-                                                        density="comfortable"
-                                                        label="País o región"
-                                                        variant="outlined"
-                                                    ></v-text-field>
-                                                </v-col>
-                                                <v-col class="v-col-sm-12 v-col-12 pb-1">
-                                                    <v-textarea
-                                                        color="primary"
-                                                        density="comfortable"
-                                                        label="Cuéntanos sobre el proyecto"
-                                                        variant="outlined"
-                                                    ></v-textarea>
-                                                </v-col>
-                                                <v-col class="v-col-12 mb-md-3 mb-1">
-                                                    <div class="ml-n2">
-                                                        <div class="d-flex align-center">
-                                                            <v-checkbox-btn></v-checkbox-btn>
-                                                            <div class="text-muted pl-2">
-                                                                I have read and acknowledge
-                                                                the
-                                                                <a aria-current="page"
-                                                                   class="router-link-active router-link-exact-active opacity-1 text-decoration-none text-primary"
-                                                                   href="/">
-                                                                    Terms and Conditions
-                                                                </a>
-                                                            </div>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col class="v-col-sm-12 v-col-12 pb-1">
+                                                <v-text-field
+                                                    color="primary"
+                                                    density="comfortable"
+                                                    label="Email"
+                                                    variant="outlined"
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col class="v-col-sm-12 v-col-12 pb-1">
+                                                <v-text-field
+                                                    color="primary"
+                                                    density="comfortable"
+                                                    label="País o región"
+                                                    variant="outlined"
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col class="v-col-sm-12 v-col-12 pb-1">
+                                                <v-textarea
+                                                    color="primary"
+                                                    density="comfortable"
+                                                    label="Cuéntanos sobre el proyecto"
+                                                    variant="outlined"
+                                                ></v-textarea>
+                                            </v-col>
+                                            <v-col class="v-col-12 mb-md-3 mb-1">
+                                                <div class="ml-n2">
+                                                    <div class="d-flex align-center">
+                                                        <v-checkbox-btn></v-checkbox-btn>
+                                                        <div class="text-muted pl-2">
+                                                            I have read and acknowledge
+                                                            the
+                                                            <a aria-current="page"
+                                                               class="router-link-active router-link-exact-active opacity-1 text-decoration-none text-primary"
+                                                               href="/">
+                                                                Terms and Conditions
+                                                            </a>
                                                         </div>
-
                                                     </div>
-                                                </v-col>
-                                                <v-col class="v-col v-col-12 pt-0">
-                                                    <v-btn block="" class="bg-primary rounded-md" size="large"
-                                                           style="text-transform: capitalize; letter-spacing: 0px;"
-                                                           variant="flat">enviar consulta
-                                                    </v-btn>
-                                                </v-col>
-                                            </v-row>
-                                        </v-form>
-                                    </div>
-                                </v-card>
-                            </div>
+
+                                                </div>
+                                            </v-col>
+                                            <v-col class="v-col v-col-12 pt-0">
+                                                <v-btn block="" class="bg-primary rounded-md" size="large"
+                                                       style="text-transform: capitalize; letter-spacing: 0px;"
+                                                       variant="flat">enviar consulta
+                                                </v-btn>
+                                            </v-col>
+                                        </v-row>
+                                    </v-form>
+                                </div>
+                            </v-card>
+
                         </v-col>
                     </v-row>
                 </v-container>

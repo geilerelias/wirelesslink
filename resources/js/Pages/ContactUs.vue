@@ -6,16 +6,16 @@ import SpinnerComponent from "@/Components/SpinnerComponent.vue";
 
 
 const form = useForm({
-/*  nombres: 'Geiler ELias',
-    apellidos: 'Radillo Sarmiento',
-    email: 'geilerelias@gmail.com',
-    asunto: 'Ejemplo de mensaje',
-    mensaje: 'Este es un ejemplo de mensaje para probar funcionamiento de pagina web',*/
+    /*  nombres: 'Geiler ELias',
+        apellidos: 'Radillo Sarmiento',
+        email: 'geilerelias@gmail.com',
+        asunto: 'Ejemplo de mensaje',
+        mensaje: 'Este es un ejemplo de mensaje para probar funcionamiento de pagina web',*/
     nombres: '',
     apellidos: '',
     email: '',
     asunto: '',
-    mensaje:''
+    mensaje: ''
 });
 
 const nameRules = [
@@ -96,11 +96,11 @@ const enviarFormulario = () => {
                                         <v-icon color="primary" icon="mdi-map-marker" size="32"></v-icon>
                                     </v-avatar>
                                     <div class="ml-md-12 ml-sm-5">
-                                        <h3 class="text-h5 font-weight-bold text-dark mb-2">
+                                        <h3 class="text-h5 text-uppercase font-weight-bold text-dark mb-2">
                                             Dirección
                                         </h3>
                                         <p class="text-body-1 text-muted mb-md-10 mb-sm-5 mb-3">
-                                            No dude en escribirnos. Responderemos lo antes posible.
+                                            Puedes localizarnos en nuestra oficina principal.
                                         </p>
                                         <a aria-current="page"
                                            class="router-link-active router-link-exact-active text-decoration-none text-primary text-body-1 font-weight-medium d-flex align-center justify-center justify-sm-start"

@@ -5,13 +5,14 @@ import bgLogo from '../../images/bg/bg-logo.png'
 import about1 from '../../images/bg/bg-25.png'
 import bg25 from '../../images/bg/bg-25.png'
 import about2 from '../../images/bg/bg-22.png'
-import bgMap from '../../images/bg/bg-map.png'
+import bgMap from '../../images/bg/bg-3.png'
 import bg18 from '../../images/bg/bg-18.png'
 import team1 from '../../images/avatar/user-1.png'
 import team2 from '../../images/avatar/user-2.png'
 import team3 from '../../images/avatar/user-3.png'
 import team4 from '../../images/avatar/user-4.png'
 import team5 from '../../images/avatar/user-5.png'
+import {useDisplay} from "vuetify";
 
 
 const arrayPresencia = [
@@ -41,19 +42,20 @@ const teamList = [
     {img: team5, name: 'Andres Guerra', rol: 'Técnico'},
     // Add more professionals as needed
 ];
+const {mobile} = useDisplay()
 
 </script>
 
 <template>
     <page-layout title="About Us">
-        <div class="mt-95 border-top">
+        <div class="mt-sm-95">
             <v-container class=" ">
                 <v-row class=" align-center justify-md-space-between justify-center pb-5 pt-12">
                     <v-col class="v-col-md-7 v-col-12">
-                        <div class="text-md-left text-center position-relative about-content">
+                        <div class="text-md-left">
                             <h2
-                                class="text-h4 font-weight-bold text-dark text-primary mb-4 aos-init aos-animate"
-                                data-aos="fade-up"
+                                :data-aos="mobile?'':'fade-up'"
+                                class="text-h4 font-weight-bold text-dark text-primary mb-4"
                                 data-aos-delay="200" data-aos-duration="1000">
                                 <span class="text-secondary  font-weight-light">
                                     ¿Quienes
@@ -63,8 +65,9 @@ const teamList = [
                                     Somos?
                                 </span>
                             </h2>
-                            <p class="text-body-1 text-justify text-muted bg-surface position-relative z-index1 aos-init aos-animate"
-                               data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                            <p :data-aos="mobile?'':'fade-up'"
+                               class="text-body-1 text-justify text-muted bg-surface position-relative z-index1"
+                               data-aos-delay="400" data-aos-duration="1000">
                                 Es una empresa dedicada a la prestación de servicios relacionados
                                 con las tecnologías de la información y la comunicación a pequeñas
                                 y medianas empresas y en general a la comunidad, ejecutando
@@ -196,17 +199,19 @@ const teamList = [
                 <v-container>
                     <v-row class="justify-space-between align-center">
                         <v-col class="v-col-md-5 v-col-12">
-                            <div class="position-relative">
-                                <v-img :src="bgMap"
-                                       alt="banner" class="w-100 rounded-md aos-init aos-animate"
-                                       data-aos="fade-up" data-aos-delay="200"
+                            <div class=" ">
+                                <v-img :aspect-ratio="9/16"
+                                       :data-aos="mobile?'':'fade-up'"
+                                       :src="bgMap"
+                                       alt="banner" class="rounded-md  w-100 h-100"
+                                       cover="" data-aos-delay="200"
                                        data-aos-duration="1000">
 
                                 </v-img>
                             </div>
                         </v-col>
                         <v-col class="v-col-md-6 v-col-12">
-                            <div class="text-center text-md-start aos-init aos-animate" data-aos="fade-up"
+                            <div :data-aos="mobile?'':'fade-up'" class="text-center text-md-start aos-init aos-animate"
                                  data-aos-delay="200" data-aos-duration="1000">
                                 <h2 class="text-h4 text-primary text-dark font-weight-bold mb-4">
                                     <span class="text-secondary  text-h5 font-weight-light">
@@ -231,15 +236,7 @@ const teamList = [
                                                 color="grey-lighten-2"
                                                 size="30"
                                                 variant="flat">
-                                                <svg class="icon-tabler icon-tabler-check text-primary"
-                                                     fill="none" height="18px"
-                                                     stroke="currentColor" stroke-linecap="round"
-                                                     stroke-linejoin="round"
-                                                     stroke-width="3" viewBox="0 0 24 24" width="18px"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 0h24v24H0z" fill="none" stroke="none"></path>
-                                                    <path d="M5 12l5 5l10 -10"></path>
-                                                </svg>
+                                                <v-icon color="success" icon="mdi-check"></v-icon>
                                             </v-avatar>
                                             <div>
                                                 <p class="text-left text-primary text-decoration-none text-capitalize"
@@ -262,15 +259,17 @@ const teamList = [
             </div>
         </section>
 
-        <div class="team bg-secondary py-md-12 py-5">
+        <div class="bg-secondary py-md-12 py-5">
             <div class="py-sm-5">
-                <v-container class="">
+                <v-container>
                     <div class="text-center">
-                        <h2 class="text-h2 text-dark mb-3 aos-init aos-animate"
-                            data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
+                        <h2 :data-aos="mobile?'':'fade-right'"
+                            class="text-h2 text-dark mb-3 aos-init aos-animate" data-aos-delay="200"
+                            data-aos-duration="1000">
                             Nuestro equipo
                         </h2>
-                        <p class="text-body-1 text-muted aos-init aos-animate" data-aos="fade-left" data-aos-delay="200"
+                        <p :data-aos="mobile?'':'fade-left'" class="text-body-1 text-muted aos-init aos-animate"
+                           data-aos-delay="200"
                            data-aos-duration="1000">
                             Profesionales dedicados de wirelesslink
                         </p>
@@ -281,7 +280,7 @@ const teamList = [
                         <div
                             v-for="(team, n) in teamList"
                             :key="n"
-                            class="ma-2 pa-2"
+                            class="pa-2"
                         >
                             <div class="hover-card overflow-hidden rounded-md lh-10 mb-7">
                                 <v-avatar size="200" variant="elevated">
@@ -296,9 +295,9 @@ const teamList = [
                         </div>
                     </div>
                     <div
-                        class="bg-primary py-sm-15 py-7 px-lg-16 px-4 mt-12 rounded-md position-relative">
+                        class="bg-primary py-sm-15 py-7 px-lg-16 px-4 mt-12 rounded-md">
                         <div class="px-sm-6 px-3">
-                            <v-row class="v-row">
+                            <v-row>
                                 <v-col class="v-col-md-6 v-col-12"><h2
                                     class="text-h4 mb-6 text-sm-start text-center text-white">¿Tengo una pregunta?</h2>
                                     <p class="text-h6 font-weight-regular text-sm-start text-center text-white">
@@ -309,18 +308,18 @@ const teamList = [
                                     </p>
                                 </v-col>
                                 <v-col class="v-col-md-6 v-col-12">
-                                    <div class="d-sm-flex text-center justify-md-end justify-center">
+                                    <div
+                                        class="d-sm-flex d-flex flex-column flex-sm-row  text-center justify-md-end justify-center">
                                         <v-img
                                             :src="bg18"
                                             alt="contact"
-                                            class="rounded-xl mr-2"
-                                            cover="" height="300" width="100"/>
+                                            class="rounded-xl mr-2 mb-sm-0 mb-2"
+                                            cover="" height="300"/>
                                         <v-img
-
                                             :src="bg25"
                                             alt="professional"
                                             class="rounded-xl"
-                                            cover="" height="300" width="100"/>
+                                            cover="" height="300"/>
                                     </div>
                                 </v-col>
                             </v-row>
@@ -346,15 +345,15 @@ const teamList = [
                                         </div>
 
                                         <div>
-                                            <div class="text-uppercase text-14 mt-sm-0 mt-4">EMAIL</div>
-                                            <div class="d-flex">
+                                            <div class="text-uppercase text-sm-14 text-body-1 mt-sm-0 mt-4">EMAIL</div>
+                                            <div class="d-flex align-center">
                                                 <a class="text-decoration-none"
                                                    href="mailto:contacto@wirelesslink.com.co"
                                                    target="_blank">
                                                     <v-icon color="white">mdi-email</v-icon>
                                                 </a>
 
-                                                <a class="font-weight-medium text-h5 text-white ml-2"
+                                                <a class="font-weight-medium text-md-h5 text-white ml-2 text-truncate"
                                                    href="mailto:contacto@wirelesslink.com.co">
                                                     contacto@wirelesslink.com.co
                                                 </a>

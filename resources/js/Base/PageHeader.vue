@@ -46,8 +46,7 @@ const back = () => {
     <v-app-bar
         :class="{ 'bg-transparent white--text': isTransparent && isHomePage, 'bg-white': !isTransparent || !isHomePage }"
         class="px-sm-12 px-auto py-4"
-        scroll-behavior="elevate" scroll-threshold="320"
-        tyle="top: 0px; z-index: 1004; transform: translateY(0%); position: fixed; left: 0px; width: calc((100% - 0px) - 0px);">
+        scroll-behavior="elevate">
 
         <template v-slot:prepend>
             <transition mode="out-in" name="custom-transition">
@@ -107,12 +106,13 @@ const back = () => {
         </Link>
 
         <Link :href="route('register')">
-            <v-btn class="bg-secondary bg-primary ms-3 sticky-border d-lg-flex d-none" color="white" size="large">
+            <v-btn class="bg-secondary bg-primary ml-2 d-lg-flex d-none" color="white" size="large">
                 register
             </v-btn>
         </Link>
         <v-btn
-            class="d-md-none d-flex drawer-icon no-effect ml-auto "
+            :class="{ 'text-white bg-primary': isTransparent && isHomePage}"
+            class="d-md-none d-flex "
             icon tile
             @click="changeDrawer(drawerStore.drawer)"
         >

@@ -55,7 +55,11 @@ function redirect(dir) {
         <v-divider></v-divider>
 
         <v-list density="compact" nav="">
-            <v-list-item v-for="link in linksStore.links" :prepend-icon="link.icon" :title="link.title"
+            <v-list-item v-for="link in linksStore.links"
+                         :class="{
+                            'v-list-item--active text-primary font-weight-black': route().current(link.route) ,
+                         }"
+                         :prepend-icon="link.icon" :title="link.title"
                          @click="redirect(link.route)"></v-list-item>
         </v-list>
     </v-navigation-drawer>
