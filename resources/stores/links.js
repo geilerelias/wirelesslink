@@ -17,12 +17,12 @@ export const useLinksStore = defineStore("links", {
             }, {
 
                 title: "Servicios",
-                icon: 'mdi-account-question',
+                icon: 'mdi-tools',
                 route: "services"
             }, {
 
                 title: "Clientes",
-                icon: 'mdi-account',
+                icon: 'mdi-account-multiple',
                 route: "clients"
             },
             {

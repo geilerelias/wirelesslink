@@ -2,6 +2,7 @@
 import logo from "@/Components/Logo.vue";
 import name from './../../images/logo/name-primary.png'
 import {useLinksStore} from "../../stores/links.js";
+import {Link} from '@inertiajs/vue3'
 
 const empresa = {
     nombre: "WirelessLink",
@@ -151,12 +152,12 @@ const linksStore = useLinksStore();
                         <ul>
                             <li v-for="(item, i) in linksStore.links" :key="i"
                                 class="mb-2">
-                                <a :href="route(item.route)"
+                                <Link :href="route(item.route)"
                                    aria-current="page"
                                    class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
                                    target="_blank">
                                     {{ item.title }}
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </v-col>

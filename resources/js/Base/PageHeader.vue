@@ -112,7 +112,7 @@ const back = () => {
             </v-btn>
         </Link>
         <v-btn
-            class="d-md-none d-flex drawer-icon no-effect ml-auto mr-0"
+            class="d-md-none d-flex drawer-icon no-effect ml-auto "
             icon tile
             @click="changeDrawer(drawerStore.drawer)"
         >

@@ -1,12 +1,12 @@
 <script setup>
 import {ref} from "vue";
-
-import logo from '../../images/logo/logo.png';
-import bgLogo from '../../images/bg/bg-logo.png';
+import {router} from '@inertiajs/vue3'
+import bg from '../../images/bg/bg-1.png';
 import {useDrawerStore} from "../../stores/drawer";
 
 import {useLinksStore} from "../../stores/links";
-import {router} from "@inertiajs/vue3";
+import logo from "../../images/logo/logo.png";
+import name from "../../images/logo/name.png";
 
 const linksStore = useLinksStore();
 
@@ -22,34 +22,41 @@ const logout = () => {
     router.post(route('logout'));
 };
 
-const redirect = dir => {
+function redirect(dir) {
     router.get(route(dir))
     drawerStore.drawer = false;
 }
+
+
 </script>
 
 <template>
     <v-navigation-drawer
-        expand-on-hover
         v-model="drawerStore.drawer"
+        expand-on-hover
         style="box-shadow: rgb(0 0 0 / 20%) -20px 1px 17px 8px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px"
         temporary
     >
-        <v-img cover :src="bgLogo"/>
-        <v-list>
-            <v-list-item
-                :prepend-avatar="logo"
-                subtitle="tecnico@wirelesslink.com.co"
-                title="Juan Amador"
-            ></v-list-item>
-        </v-list>
+        <v-img :src="bg" cover gradient="to top right, rgb(21 92 138 / 75%), rgb(4 16 35 / 82%)">
+            <v-row class="d-flex fill-height align-center justify-center">
+                <v-col class="d-flex justify-center">
+                    <div class="d-flex align-center flex-column mt-12">
+                        <img :src="logo" alt="logo" data-aos="fade-up"
+                             data-aos-delay="200" data-aos-duration="1000" style="height: 100px;"/>
+                        <img :src="name" alt="logo name" class="h-14 mt-4" data-aos="fade-down"
+                             data-aos-delay="200" data-aos-duration="1000"
+                             style="object-fit: contain;width: 80%;"/>
+                    </div>
+                </v-col>
+            </v-row>
+        </v-img>
+
 
         <v-divider></v-divider>
 
-        <v-list density="compact" nav>
-            <v-list-item prepend-icon="mdi-folder" title="My Files" value="myfiles"></v-list-item>
-            <v-list-item prepend-icon="mdi-account-multiple" title="Shared with me" value="shared"></v-list-item>
-            <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
+        <v-list density="compact" nav="">
+            <v-list-item v-for="link in linksStore.links" :prepend-icon="link.icon" :title="link.title"
+                         @click="redirect(link.route)"></v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>
