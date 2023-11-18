@@ -1,6 +1,45 @@
 <script setup>
 import PageLayout from "@/Layouts/PageLayout.vue";
 import bgContact from '../../images/bg/bg-contact-2.jpg'
+import {useForm} from '@inertiajs/vue3'
+import SpinnerComponent from "@/Components/SpinnerComponent.vue";
+
+
+const form = useForm({
+    nombres: 'Geiler ELias',
+    apellidos: 'Radillo Sarmiento',
+    email: 'geilerelias@gmail.com',
+    asunto: 'Ejemplo de mensaje',
+    mensaje: 'Este es un ejemplo de mensaje para probar funcionamiento de pagina web',
+});
+
+const nameRules = [
+    v => !!v || 'El nombre es requerido',
+];
+const emailRules = [
+    v => !!v || 'El E-mail es requerido',
+    v => /.+@.+\..+/.test(v) || 'El email debe ser válido',
+];
+
+const enviarFormulario = () => {
+    // Accede a form.value.nombres, form.value.apellidos, etc.
+    // y envía los datos al backend usando Inertia.post
+    form.post('/enviar-correo', {
+        onSuccess: page => {
+            console.log(page)
+            //form.reset();
+            form.successMessage = '¡Mensaje enviado con éxito!';
+        },
+        onError: errors => {
+            console.log(errors)
+            form.errorMessage = 'Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo.';
+
+        },
+        onFinish: visit => {
+            console.log(visit)
+        },
+    })
+};
 </script>
 
 <template>
@@ -89,55 +128,82 @@ import bgContact from '../../images/bg/bg-contact-2.jpg'
                     <v-row class="align-center">
                         <v-col class="v-col-md-6 v-col-12">
                             <div><h2 class="text-h4 text-dark mb-md-10 mb-6">Obtenga información en línea</h2>
-                                <v-form novalidate="">
+                                <v-form novalidate @submit.prevent="enviarFormulario">
                                     <v-row>
                                         <v-col class="v-col-sm-6 v-col-12 py-0">
                                             <v-label class="text-muted mb-2">
                                                 Nombres*
                                             </v-label>
-                                            <v-text-field density="comfortable" variant="outlined">
-                                            </v-text-field>
+                                            <v-text-field v-model="form.nombres"
+                                                          :error-messages="form.errors.nombres"
+                                                          :rules="[v => !!v || 'El nombre es requerido']"
+                                                          density="comfortable" variant="outlined"
+                                                          @blur="form.clearErrors('nombres')"/>
                                         </v-col>
                                         <v-col class="v-col-sm-6 v-col-12 py-0">
-                                            <v-label class=" text-muted mb-2">
+                                            <v-label class="text-muted mb-2">
                                                 Apellidos*
                                             </v-label>
-                                            <v-text-field density="comfortable" variant="outlined">
-                                            </v-text-field>
+                                            <v-text-field v-model="form.apellidos"
+                                                          :error-messages="form.errors.apellidos"
+                                                          :rules="[v => !!v || 'Los apellidos son requeridos']"
+                                                          density="comfortable" variant="outlined"
+                                                          @blur="form.clearErrors('apellidos')"/>
                                         </v-col>
                                         <div class="v-col-12 py-0">
                                             <v-label class="text-muted mb-2">
                                                 Email*
                                             </v-label>
-                                            <v-text-field density="comfortable" variant="outlined">
-                                            </v-text-field>
+                                            <v-text-field v-model="form.email"
+                                                          :error-messages="form.errors.email"
+                                                          :rules="emailRules" density="comfortable" variant="outlined"
+                                                          @blur="form.clearErrors('email')"/>
                                         </div>
                                         <div class="v-col-12 py-0">
-                                            <v-label class=" text-muted mb-2">
+                                            <v-label class="text-muted mb-2">
                                                 Asunto*
                                             </v-label>
-                                            <v-text-field density="comfortable" variant="outlined">
-                                            </v-text-field>
+                                            <v-text-field v-model="form.asunto"
+                                                          :error-messages="form.errors.asunto"
+                                                          :rules="[v => !!v || 'El asunto es requerido']"
+                                                          density="comfortable" variant="outlined"
+                                                          @blur="form.clearErrors('asunto')"/>
                                         </div>
-                                        <v-col class=" v-col-12 py-0">
+                                        <v-col class="v-col v-col-12 py-0">
                                             <v-label class="text-muted mb-2">
                                                 Mensaje*
                                             </v-label>
-                                            <v-textarea density="comfortable" variant="outlined">
-
-                                            </v-textarea>
+                                            <v-textarea v-model="form.mensaje"
+                                                        :error-messages="form.errors.mensaje"
+                                                        :rules="[v => !!v || 'El mensaje es requerido']"
+                                                        density="comfortable" variant="outlined"
+                                                        @blur="form.clearErrors('mensaje')"/>
                                         </v-col>
 
                                         <v-col class="v-col v-col-12 text-md-start text-center">
-                                            <v-btn class="bg-primary rounded-md"
+                                            <v-btn :disabled="form.processing" class="bg-primary rounded-md"
                                                    size="large"
                                                    style="text-transform: capitalize; letter-spacing: 0px;"
-                                                   variant="flat">
+                                                   type="submit" variant="flat">
                                                 Enviar mensaje
                                             </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
+
+                                <!-- Mostrar mensajes de éxito o error -->
+                                <v-alert v-if="form.successMessage" class="mt-4" type="success">
+                                    {{ form.successMessage }}
+                                </v-alert>
+                                <v-alert v-if="form.errorMessage" class="mt-4" type="error">
+                                    {{ form.errorMessage }}
+                                </v-alert>
+
+                                <!-- Barra de progreso durante la carga -->
+                                <v-progress-linear v-if="form.processing" class="mt-4"
+                                                   indeterminate></v-progress-linear>
+
+                                <spinner-component :opacity="0.9" :value="form.processing"></spinner-component>
                             </div>
                         </v-col>
                         <div class="v-col-md-6 v-col-12">
