@@ -60,7 +60,21 @@ function redirect(dir) {
                             'v-list-item--active text-primary font-weight-black': route().current(link.route) ,
                          }"
                          :prepend-icon="link.icon" :title="link.title"
-                         @click="redirect(link.route)"></v-list-item>
+                         @click="redirect(link.route)">
+            </v-list-item>
+            <v-list-subheader>
+                Autenticación
+            </v-list-subheader>
+            <v-list-item
+                :title="'Iniciar sesión'" prepend-icon="mdi-login"
+                @click="redirect('login')">
+
+            </v-list-item>
+            <v-list-item
+                :title="'Registrarse'" prepend-icon="mdi-account-plus"
+                @click="redirect('register')">
+
+            </v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>

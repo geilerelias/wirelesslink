@@ -29,10 +29,11 @@ const clientes = [
                             <v-img :aspect-ratio="16/9" :src="bg1" class="rounded-xl"
                                    cover="" gradient="to top right, rgb(21 92 138 / 75%), rgb(4 16 35 / 82%)"
                                    height="50vh" width="100%">
-                                <v-row class="align-center  fill-height justify-space-between px-md-7 px-0 py-md-10 py-0">
+                                <v-row
+                                    class="align-center  fill-height justify-space-between px-md-7 px-0 py-md-10 py-0">
                                     <div class="v-col-md-7 v-col-12 text-md-left text-center">
                                         <h2
-                                            class="text-h5 text-sm-h4 text-md-h3 font-weight-bold text-dark text-white mb-10 aos-init aos-animate"
+                                            class="text-h4  text-md-h3 font-weight-bold text-dark text-white mb-10 aos-init aos-animate"
                                             data-aos="fade-up"
                                             data-aos-delay="200" data-aos-duration="1000">
                                             <span class="text-secondary  text-uppercase font-weight-light">

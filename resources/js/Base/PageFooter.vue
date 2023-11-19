@@ -110,21 +110,21 @@ const linksStore = useLinksStore();
                             <li class="mb-2">
                                 <a
                                     class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
-                                    href="/docs/index.html"
+                                    href="#"
                                     rel="noopener noreferrer">
                                     Documentación
                                 </a>
                             </li>
                             <li class="mb-2">
                                 <a aria-current="page"
-                                   class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
+                                   class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
                                    href="/#">
                                     Terminos y condiciones
                                 </a>
                             </li>
                             <li class="mb-2">
                                 <a aria-current="page"
-                                   class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
+                                   class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
                                    href="/#">
                                     Licencias
                                 </a>
@@ -132,14 +132,14 @@ const linksStore = useLinksStore();
 
                             <li class="mb-2">
                                 <a aria-current="page"
-                                   class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
+                                   class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
                                    href="/#">
                                     Soporte
                                 </a>
                             </li>
                             <li class="mb-2">
                                 <a aria-current="page"
-                                   class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
+                                   class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
                                    href="/#">
                                     Ayuda
                                 </a>
@@ -153,9 +153,9 @@ const linksStore = useLinksStore();
                             <li v-for="(item, i) in linksStore.links" :key="i"
                                 class="mb-2">
                                 <Link :href="route(item.route)"
-                                   aria-current="page"
-                                   class="router-link-active router-link-exact-active text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
-                                   target="_blank">
+                                      aria-current="page"
+                                      class="text-muted text-decoration-none text-capitalize font-weight-regular position-relative"
+                                      target="_blank">
                                     {{ item.title }}
                                 </Link>
                             </li>

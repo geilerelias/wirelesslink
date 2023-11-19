@@ -54,16 +54,18 @@ const {smAndDown} = useDisplay()
                                 <img :src="logo" alt="logo" data-aos="fade-up"
                                      data-aos-delay="200" data-aos-duration="1000" style="height: 300px;"/>
                                 <img :src="name" alt="logo name" class="h-14 mt-4" data-aos="fade-down"
-                                     data-aos-delay="200" data-aos-duration="1000" style="height: 100px;"/>
+                                     data-aos-delay="200" data-aos-duration="1000"
+                                     style="height: 100px;object-fit: contain;width: 80vw"/>
                             </div>
                             <v-container>
                                 <v-row class="d-flex justify-center">
-                                    <v-col cols="8">
+                                    <v-col cols="10">
                                         <h1 class="text-h5 text-lg-h4 font-weight-bold text-white mb-6">
                                             Expertos en TIC, soluciones innovadoras, eficientes y personalizadas.
                                         </h1>
                                         <p class="text-body-1  text-white text-muted mb-8">
-                                            Diseñamos, implementamos y gestionamos soluciones TIC personalizadas para empresas,
+                                            Diseñamos, implementamos y gestionamos soluciones TIC personalizadas para
+                                            empresas,
                                             optimizando rendimiento tecnológico
                                         </p>
 

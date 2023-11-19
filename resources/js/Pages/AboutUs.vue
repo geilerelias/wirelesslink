@@ -134,8 +134,8 @@ const {mobile} = useDisplay()
                             </p>
                         </div>
                         <v-col class="v-col-md-7 v-col-12">
-                            <v-row class="d-flex justify-content-around justify-center">
-                                <v-col class="col-12 col-md-6 col-lg-5 col">
+                            <v-row class="d-flex flex-column flex-sm-row justify-content-around justify-center">
+                                <v-col class="col-12 col-sm-12 col-md-6 col-lg-5 ">
                                     <v-card
                                         class="mr-1 fill-height  rounded-lg">
                                         <v-card-title>
@@ -162,7 +162,7 @@ const {mobile} = useDisplay()
                                     </v-card>
                                 </v-col>
 
-                                <v-col class="col-12 col-md-6 col-lg-5 mt-4 mt-md-0">
+                                <v-col class="col-12 col-sm-12 col-md-6 col-lg-5 mt-4 mt-sm-0">
                                     <v-card
                                         class="mr-1 fill-height rounded-lg">
                                         <v-card-title>
