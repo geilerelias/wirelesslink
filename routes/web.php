@@ -50,6 +50,10 @@ Route::get('/example', function () {
     return Inertia::render('Example');
 });
 
+Route::get('/documentation', function () {
+    return Inertia::render('Documentation');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

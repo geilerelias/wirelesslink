@@ -95,7 +95,7 @@ const back = () => {
             </div>
         </Link>
         <v-spacer></v-spacer>
-        <Link :href="route('login')">
+        <Link :href="route('login')" class="text-decoration-none ">
             <v-btn :color="isTransparent && isHomePage ? 'white' : 'primary'"
                    class="rounded-md d-md-flex d-none white-outline"
                    size="large"
@@ -105,7 +105,7 @@ const back = () => {
             </v-btn>
         </Link>
 
-        <Link :href="route('register')">
+        <Link :href="route('register')" class="text-decoration-none ">
             <v-btn class="bg-secondary bg-primary ml-2 d-lg-flex d-none" color="white" size="large">
                 register
             </v-btn>

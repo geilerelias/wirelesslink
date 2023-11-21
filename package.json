@@ -23,6 +23,7 @@
         "@jamescoyle/vue-icon": "^0.1.2",
         "@mapbox/node-pre-gyp": "^1.0.11",
         "@mdi/js": "^7.2.96",
+        "@tato30/vue-pdf": "^1.8.1",
         "@vue/babel-preset-jsx": "^1.4.0",
         "animejs": "^3.2.1",
         "aos": "^2.3.4",

@@ -2,9 +2,7 @@
 
 import PageLayout from "@/Layouts/PageLayout.vue";
 import {useDisplay} from "vuetify";
-import {onMounted} from "vue";
-
-import AOS from "aos";
+import {Link} from '@inertiajs/vue3'
 import user1 from './../../images/avatar/user-1.png'
 import user2 from './../../images/avatar/user-2.png'
 import user3 from './../../images/avatar/user-3.png'
@@ -22,9 +20,6 @@ import logo from "../../images/logo/logo.png";
 
 const {mobile} = useDisplay()
 
-onMounted(() => {
-    AOS.init();
-})
 
 const pilaresCorporativos = [
     {
@@ -60,9 +55,9 @@ const pilaresCorporativos = [
             <v-row class="d-flex fill-height align-center justify-center">
                 <v-col class="d-flex justify-center">
                     <div class="d-flex align-center flex-column mt-12">
-                        <img :data-aos="mobile?'':'fade-up'" :src="logo" alt="logo"
+                        <img :data-aos="mobile?'fade-up':'fade-up'" :src="logo" alt="logo"
                              data-aos-delay="200" data-aos-duration="1000" style="height: 300px;"/>
-                        <img :data-aos="mobile?'':'fade-down'" :src="name" alt="logo name" class="h-14 mt-4"
+                        <img :data-aos="mobile?'fade-down':'fade-down'" :src="name" alt="logo name" class="h-14 mt-4"
                              data-aos-delay="200" data-aos-duration="1000"
                              style="height: 100px;object-fit: contain;width: 80vw"/>
                     </div>
@@ -75,7 +70,7 @@ const pilaresCorporativos = [
         <section class="pt-md-16 pt-8 pb-md-12 pb-8">
             <v-container class="">
                 <v-row class="align-center justify-space-between pt-md-7">
-                    <v-col :data-aos="mobile?'':'fade-right'"
+                    <v-col :data-aos="mobile?'fade-up':'fade-right'"
                            class="v-col-md-5 v-col-12" data-aos-delay="200"
                            data-aos-duration="1000">
                         <div class="d-flex align-center mb-6">
@@ -133,11 +128,12 @@ const pilaresCorporativos = [
                             <p class="text-subtitle-1 ml-6">
                                 ¿Necesitas ayuda?
                                 Link
-                                <a aria-current="page"
-                                   class="router-link-active router-link-exact-active text-decoration-none text-primary"
-                                   href="/">
-                                    Contacta con nuestros expertos
-                                </a>
+                                <Link class="text-decoration-none" href="/contact-us">
+                                    <a aria-current="page"
+                                       class="router-link-active router-link-exact-active text-decoration-none text-primary">
+                                        Contacta con nuestros expertos
+                                    </a>
+                                </Link>
                                 <br> Háblanos de tu proyecto
                             </p>
                         </div>
@@ -145,18 +141,18 @@ const pilaresCorporativos = [
                     <v-col v-if="!mobile" class="v-col-md-6 v-col-12">
                         <div class="mt-12 rounded-md d-flex justify-center text-center ">
 
-                            <div :data-aos="mobile?'':'fade-left'"
+                            <div :data-aos="mobile?'fade-up':'fade-left'"
                                  class="position-relative text-center text-lg-start mt-12"
                             >
                                 <img
-                                    :data-aos="mobile?'':'fade-down-left'"
+                                    :data-aos="mobile?'fade-up':'fade-down-left'"
                                     :src="bg3"
                                     alt="shape"
                                     class="img-fluid position-absolute top-0 right-0 mt-n10 mr-n16 h-25 rounded-lg z-index2"
                                     data-aos-delay="200"
                                     data-aos-duration="1000"/>
 
-                                <div :data-aos="mobile?'':'zoom-in'"
+                                <div :data-aos="mobile?'fade-up':'zoom-in'"
                                      class="position-relative z-index1 rounded-xl overflow-hidden"
                                      data-aos-delay="200"
                                      data-aos-duration="1000">
@@ -164,7 +160,7 @@ const pilaresCorporativos = [
                                          alt="banner" class="img-fluid rounded-lg"/>
                                 </div>
 
-                                <img :data-aos="mobile?'':'fade-down-right'" :src="bg22"
+                                <img :data-aos="mobile?'fade-up':'fade-down-right'" :src="bg22"
                                      alt="bg"
                                      class="img-fluid position-absolute bottom-0 left-0 mb-n12 ml-n12 h-25 rounded-lg z-index2"
                                      data-aos-delay="200"
@@ -183,12 +179,12 @@ const pilaresCorporativos = [
                     <v-row class="justify-center">
                         <v-col class="v-col-sm-8 v-col-12">
                             <div class="text-center">
-                                <div :data-aos="mobile?'':'fade-right'"
+                                <div :data-aos="mobile?'fade-up':'fade-right'"
                                      :data-aos-delay="200" class="d-flex align-center mb-5 justify-center "
                                      data-aos-duration="1000"><span
                                     class="bg-success pa-2 rounded-circle mr-2"></span><h6
                                     class="text-subtitle-1 text-dark font-weight-bold">pilares corporativos</h6></div>
-                                <h2 :data-aos="mobile?'':'fade-left'"
+                                <h2 :data-aos="mobile?'fade-up':'fade-left'"
                                     class="text-h4 font-weight-bold text-dark mb-md-12 mb-6"
                                     data-aos-delay="200" data-aos-duration="1000">
                                     La esencia de nuestra misión se encuentra en los pilares que sustentan cada aspecto
@@ -200,7 +196,7 @@ const pilaresCorporativos = [
 
                         <v-col v-for="(pilar) in pilaresCorporativos" class="v-col-sm-6 v-col-md-4 v-col-12">
                             <v-card
-                                :data-aos="mobile?'':'fade-up'"
+                                :data-aos="mobile?'fade-up':'fade-up'"
                                 class=" elevation-0  text-center py-md-15 py-6 px-md-8 px-4 rounded-md aos-init aos-animate"
                                 data-aos-delay="200" data-aos-duration="1000"><!---->
 
@@ -230,7 +226,7 @@ const pilaresCorporativos = [
                     <v-row class="justify-center">
                         <v-col class="v-col-md-8 v-col-12">
                             <div class="text-center">
-                                <div :data-aos="mobile?'':'zoom-out-up'" class="rounded-lg d-flex justify-center"
+                                <div :data-aos="mobile?'fade-up':'zoom-out-up'" class="rounded-lg d-flex justify-center"
                                      data-aos-delay="200"
                                      data-aos-duration="1000">
                                     <img :src="bg2" alt=""
@@ -287,9 +283,8 @@ const pilaresCorporativos = [
                                             <a href='https://wa.me/573003551477' target="_blank">
                                                 <v-icon color="white">mdi-whatsapp</v-icon>
                                             </a> &nbsp;
-                                            <a href="tel:+573003551477">
-                                                <h5 class="font-weight-medium text-h5 text-white">
-                                                    +57 300 355 1477</h5>
+                                            <a class="font-weight-medium text-h5 text-white" href="tel:+573003551477">
+                                                +57 300 355 1477
                                             </a>
                                         </div>
                                     </v-col>

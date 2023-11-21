@@ -132,117 +132,118 @@ const dialog = ref(false)
 
 <template>
     <page-layout title="Services">
-        <div class="pb-sm-16 pb-8  border-top">
-            <v-container class="">
-                <v-row class="align-center justify-md-space-between justify-center pb-5 pt-4">
-                    <v-col class="v-col-md-6 v-col-12">
-                        <div class="text-left position-relative about-content">
-                            <h2
-                                :data-aos="mobile?'':'fade-up'"
-                                class="text-h4 font-weight-bold text-dark text-primary mb-4 aos-init aos-animate"
-                                data-aos-delay="200" data-aos-duration="1000">
+        <v-container class=" ">
+            <v-row class=" align-start justify-md-space-between justify-center pb-5 pt-12">
+                <v-col class="v-col-md-6 v-col-12">
+                    <div class="text-md-left">
+                        <h2
+                            :data-aos="mobile?'fade-up':'fade-up'"
+                            class="text-h4 font-weight-bold text-dark text-primary mb-4"
+                            data-aos-delay="200" data-aos-duration="1000">
                                 <span class="text-secondary  font-weight-light">
                                     Nuestros
                                 </span>
-                                <br>
-                                <span class="ml-16 font-weight-bold font-weight-black">
+                            <br>
+                            <span class="ml-16 font-weight-bold font-weight-black">
                                     Servicios
                                 </span>
-                            </h2>
-                            <p :data-aos="mobile?'':'fade-up'"
-                               class="text-body-1 text-justify text-muted bg-surface position-relative z-index1 aos-init aos-animate"
-                               data-aos-delay="400" data-aos-duration="1000">
-                                En wirelesslink, nos enorgullece ofrecer una gama completa de servicios diseñados para
-                                satisfacer tus necesidades más exigentes. Desde soluciones tecnológicas personalizadas
-                                hasta asesoramiento estratégico, nuestro compromiso es brindarte resultados
-                                excepcionales. Ya sea que estés buscando optimizar tu infraestructura, implementar
-                                soluciones innovadoras o mejorar la eficiencia operativa, nuestro equipo de expertos
-                                está aquí para ayudarte en cada paso del camino. Descubre cómo nuestros servicios pueden
-                                impulsar tu éxito empresarial.
-
+                        </h2>
+                        <p :data-aos="mobile?'fade-up':'fade-up'"
+                           class="text-body-1 text-justify text-muted bg-surface position-relative z-index1"
+                           data-aos-delay="400" data-aos-duration="1000">
+                            En wirelesslink, nos enorgullece ofrecer una gama completa de servicios diseñados para
+                            satisfacer tus necesidades más exigentes. Desde soluciones tecnológicas personalizadas
+                            hasta asesoramiento estratégico, nuestro compromiso es brindarte resultados
+                            excepcionales. Ya sea que estés buscando optimizar tu infraestructura, implementar
+                            soluciones innovadoras o mejorar la eficiencia operativa, nuestro equipo de expertos
+                            está aquí para ayudarte en cada paso del camino. Descubre cómo nuestros servicios pueden
+                            impulsar tu éxito empresarial.
+                        </p>
+                    </div>
+                </v-col>
+                <v-col class="v-col-md-6 v-col-12">
+                    <v-card :data-aos="mobile?'fade-up':'fade-left'"
+                            class="rounded-md grey-lighten-2 position-relative z-index1 mt-md-6 mb-md-n16"
+                            color="blue-grey-lighten-5"
+                            data-aos-delay="200"
+                            data-aos-duration="1000" elevation="10"
+                            variant="elevated">
+                        <v-card-item class=" px-lg-15 px-8 py-sm-11 py-5">
+                            <logo></logo>
+                            <div class="font-weight-bold text-dark mt-2 mb-1">Servicios fantásticos</div>
+                            <p class="text-h6 font-weight-regular text-muted mb-4 text-justify">
+                                Nuestros servicios se destacan por soluciones tecnológicas de calidad que superan
+                                expectativas, impulsando el éxito de nuestros clientes.
                             </p>
-                        </div>
-                    </v-col>
-                    <v-col class="v-col-md-4 v-col-12">
-                        <v-card class="rounded-md grey-lighten-2 position-relative z-index1 mt-md-6 mb-md-n16"
-                                color="blue-grey-lighten-5" elevation="10"
-                                variant="elevated">
-                            <v-card-item class=" px-lg-15 px-8 py-sm-11 py-5">
-                                <logo></logo>
-                                <div class="font-weight-bold text-dark mt-2 mb-1">Servicios fantásticos</div>
-                                <p class="text-h6 font-weight-regular text-muted mb-4 text-justify">
-                                    Nuestros servicios se destacan por soluciones tecnológicas de calidad que superan
-                                    expectativas, impulsando el éxito de nuestros clientes.
-                                </p>
-                                <p class="text-muted">Recomendado por </p>
-                                <div class="d-flex align-center mt-6">
+                            <p class="text-muted">Recomendado por </p>
+                            <div class="d-flex align-center mt-6">
 
-                                    <v-avatar v-for="avatar in listAvatar" class="mr-n2" color="white" flat
-                                              size="48"
-                                              variant="outlined">
-                                        <img :src="avatar"
-                                             alt="profile"
-                                             height="48"
-                                             width="48">
-                                    </v-avatar>
-                                    <v-avatar class="bg-primary mr-n2" color="white"
-                                              flat
-                                              size="48"
-                                              variant="outlined"> 16k
-                                    </v-avatar>
-                                    <p class="text-subtitle-1 text-grey100 ml-2"></p></div>
-                            </v-card-item>
-                        </v-card>
-                    </v-col>
-                </v-row>
+                                <v-avatar v-for="avatar in listAvatar" class="mr-n2" color="white" flat
+                                          size="48"
+                                          variant="outlined">
+                                    <img :src="avatar"
+                                         alt="profile"
+                                         height="48"
+                                         width="48">
+                                </v-avatar>
+                                <v-avatar class="bg-primary mr-n2" color="white"
+                                          flat
+                                          size="48"
+                                          variant="outlined"> 16k
+                                </v-avatar>
+                                <p class="text-subtitle-1 text-grey100 ml-2"></p></div>
+                        </v-card-item>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-container>
+
+
+        <v-container class="service-video mt-12 mx-auto">
+            <div class="video-bg  rounded-md overflow-hidden lh-10">
+                <v-img
+                    :src="bgWirelesslink"
+                    alt="banner"
+                    cover=""
+                    gradient="to top right, rgb(21 92 138 / 47%), rgb(4 16 35 / 52%)" height="500">
+                    <div class="d-flex justify-center align-center fill-height">
+                        <v-dialog
+                            v-model="dialog"
+                            width="1024"
+                        >
+                            <template v-slot:activator="{ props }">
+
+                                <v-btn class="rounded-circle bg-white" elevation="10"
+                                       icon size="70"
+                                       v-bind="props">
+                                    <v-icon color="primary" icon="mdi-play" size="34"></v-icon>
+                                </v-btn>
+                            </template>
+                            <v-card>
+                                <iframe
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen
+                                    frameborder="0"
+                                    height="400"
+                                    src="https://www.youtube.com/embed/bjokCxALGBg"
+                                    title="FLYING OVER COLOMBIA (4K UHD) - Relaxing Music Along With Beautiful Nature Videos - 4K Video UltraHD"
+                                    width="100%"></iframe>
+                            </v-card>
+                        </v-dialog>
+
+                    </div>
+                </v-img>
+            </div>
+            <v-container>
+                <p class="text-muted text-body-1 mt-sm-8 mt-4">
+                    En wirelesslink, no solo ofrecemos productos y servicios excepcionales, sino que
+                    también creamos experiencias memorables. Somos más que una empresa; somos una comunidad dedicada
+                    a la innovación, la excelencia y el éxito mutuo. Descubre cómo wirelesslink puede
+                    transformar tu visión en realidad.
+                </p>
             </v-container>
-            <v-container class="service-video mt-12 mx-auto">
-                <div class="video-bg  rounded-md overflow-hidden lh-10">
-                    <v-img
-                        :src="bgWirelesslink"
-                        alt="banner"
-                        cover=""
-                        gradient="to top right, rgb(21 92 138 / 47%), rgb(4 16 35 / 52%)" height="500">
-                        <div class="d-flex justify-center align-center fill-height">
+        </v-container>
 
-
-                            <v-dialog
-                                v-model="dialog"
-                                width="1024"
-                            >
-                                <template v-slot:activator="{ props }">
-
-                                    <v-btn class="rounded-circle bg-white" elevation="10"
-                                           icon size="70"
-                                           v-bind="props">
-                                        <v-icon color="primary" icon="mdi-play" size="34"></v-icon>
-                                    </v-btn>
-                                </template>
-                                <v-card>
-                                    <iframe
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen
-                                        frameborder="0"
-                                        height="400"
-                                        src="https://www.youtube.com/embed/bjokCxALGBg"
-                                        title="FLYING OVER COLOMBIA (4K UHD) - Relaxing Music Along With Beautiful Nature Videos - 4K Video UltraHD"
-                                        width="100%"></iframe>
-                                </v-card>
-                            </v-dialog>
-
-                        </div>
-                    </v-img>
-                </div>
-                <v-container>
-                    <p class="text-muted text-body-1 mt-sm-8 mt-4">
-                        En wirelesslink, no solo ofrecemos productos y servicios excepcionales, sino que
-                        también creamos experiencias memorables. Somos más que una empresa; somos una comunidad dedicada
-                        a la innovación, la excelencia y el éxito mutuo. Descubre cómo wirelesslink puede
-                        transformar tu visión en realidad.
-                    </p>
-                </v-container>
-            </v-container>
-        </div>
 
         <div v-for="(service, s) in services" :class="{'bg-accent':s%2===0}"
              class="py-md-12 py-5">
@@ -250,9 +251,13 @@ const dialog = ref(false)
                 <v-container>
                     <v-row>
                         <v-col class="v-col-md-5 v-col-12">
-                            <div :data-aos="mobile?'':'fade-up'" class="service-speciality-content mb-13 mb-lg-0"
-                                 data-aos-delay="200" data-aos-duration="1000">
-                                <h2 class="text-primary mb-4">
+                            <div
+                                class="mb-13 mb-lg-0"
+                            >
+                                <h2 :data-aos="mobile?'fade-up':'fade-up'"
+                                    class="text-primary mb-4"
+                                    data-aos-delay="200"
+                                    data-aos-duration="1000">
                                     <span v-if="service.title1" class="text-secondary  text-h5 font-weight-light">
                                             {{ service.title1 }}
                                     </span>
@@ -279,7 +284,7 @@ const dialog = ref(false)
                                 </v-btn>
                             </div>
                         </v-col>
-                        <v-col :order="s%2!==0?'first':''" class="v-col-md-7 v-col-12">
+                        <v-col :order="s%2!==0 && !mobile?'first':''" class="v-col-md-7 v-col-12">
                             <v-row class="d-flex justify-center align-center fill-height">
                                 <v-col v-for="img in service.img">
                                     <div :key="img"
@@ -307,12 +312,12 @@ const dialog = ref(false)
                         <v-row class="v-row justify-center">
                             <div class="v-col-md-7 v-col-12">
                                 <h2
-                                    :data-aos="mobile?'':'fade-right'"
+                                    :data-aos="mobile?'fade-up':'fade-right'"
                                     class="text-h2 text-center text-dark mb-4 aos-init aos-animate"
                                     data-aos-delay="200" data-aos-duration="1000">
                                     Proceso de trabajo
                                 </h2>
-                                <p :data-aos="mobile?'':'fade-left'"
+                                <p :data-aos="mobile?'fade-up':'fade-left'"
                                    class="text-body-1 text-center text-muted aos-init aos-animate"
                                    data-aos-delay="200" data-aos-duration="1000">
                                     Te ofrecemos una nueva generación de tareas.
@@ -322,7 +327,7 @@ const dialog = ref(false)
                             <v-col class="v-col-12 mt-8">
                                 <v-row>
                                     <v-col v-for="process in processList" class="v-col-sm-6 v-col-md-3 v-col-12">
-                                        <div :data-aos="mobile?'':'fade-up'" class="aos-init aos-animate"
+                                        <div :data-aos="mobile?'fade-up':'fade-up'" class="aos-init aos-animate"
                                              data-aos-delay="200"
                                              data-aos-duration="1000">
                                             <div class="text-sm-left text-center">
