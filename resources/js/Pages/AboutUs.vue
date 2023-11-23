@@ -70,11 +70,7 @@ const arrayDepartamentos = [
     'Cesar',
     // Agrega más departamentos según sea necesario
 ];
-const
-    {
-        mobile
-    }
-        = useDisplay()
+const {mobile} = useDisplay()
 
 </script>
 

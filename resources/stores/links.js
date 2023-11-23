@@ -17,7 +17,7 @@ export const useLinksStore = defineStore("links", {
             }, {
 
                 title: "Servicios",
-                icon: 'mdi-tools',
+                icon: 'mdi-face-agent',
                 route: "services"
             }, {
 
@@ -27,10 +27,23 @@ export const useLinksStore = defineStore("links", {
             },
             {
 
-                title: "Contáctenos",
+                title: "Contacto",
                 icon: 'mdi-card-account-phone',
                 route: "contact-us"
-            }
+            },
+            {
+                fab: true,
+                title: "Test",
+                text: 'Test de velocidad',
+                icon: 'mdi-speedometer',
+                route: "speed-test"
+            }, {
+                fab: true,
+                title: "Proyectos",
+                text: 'Imágenes de proyectos',
+                icon: 'mdi-folder-image',
+                route: "project"
+            },
         ],
     }),
 })

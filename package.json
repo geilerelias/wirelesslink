@@ -31,6 +31,6 @@
         "chartjs-adapter-date-fns": "^3.0.0",
         "pinia": "^2.1.4",
         "vue-chartjs": "^5.2.0",
-        "vuetify": "^3.3.7"
+        "vuetify": "^3.4.3"
     }
 }

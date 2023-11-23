@@ -12,7 +12,7 @@ const drawerStore = useDrawerStore();
 const linksStore = useLinksStore();
 
 
-const {xsOnly, xs, mdAndDown, mdAndUp, lgAndUp, smAndUp, smAndDown} = useDisplay()
+const {xsOnly, xs, md, mdAndDown, mdAndUp, lgAndUp, smAndUp, smAndDown} = useDisplay()
 
 const isHomePage = computed(() => route().current('home'));
 
@@ -22,6 +22,9 @@ const isTransparent = ref(true);
 const handleScroll = () => {
     isTransparent.value = window.scrollY < 320;
 };
+const isCurrentRoute = ((item) => {
+    return route().current(item)
+})
 
 // Registra el evento de scroll al montar el componente
 onMounted(() => {
@@ -41,6 +44,9 @@ const back = () => {
     window.history.back();
 }
 
+
+const showText = ref({});
+
 </script>
 <template>
     <v-app-bar
@@ -52,8 +58,8 @@ const back = () => {
             <transition mode="out-in" name="custom-transition">
                 <div v-if="!(isTransparent && isHomePage)" key="logo-section" class="d-flex align-center"
                      style="max-width: 170px">
-                    <logo></logo>
-                    <img :src="name" alt="WirelessLink" style="object-fit: contain; height: 30px"/>
+                    <logo :size="45"></logo>
+                    <img :src="name" alt="WirelessLink" style="object-fit: contain; height: 25px"/>
                 </div>
             </transition>
         </template>
@@ -62,7 +68,7 @@ const back = () => {
         <v-spacer v-if="!(isTransparent && isHomePage)"></v-spacer>
 
         <Link
-            v-for="item in linksStore.links"
+            v-for="(item, index) in linksStore.links"
             :key="item.id"
             :href="route(item.route)"
             class="text-decoration-none d-md-flex d-none  py-0  menu text-capitalize justify-center"
@@ -71,19 +77,31 @@ const back = () => {
             <div>
                 <v-btn
                     :class="{
-                        'active text-primary font-weight-black': route().current(item.route) &&!(isTransparent && isHomePage) ,
-                        'active text-white font-weight-black': (isTransparent && isHomePage) && route().current(item.route),
-                        'text-secondary': !route().current(item.route) && (!isTransparent || !isHomePage),
+                        'active text-primary font-weight-black': isCurrentRoute(item.route) &&!(isTransparent && isHomePage) ,
+                        'active text-white font-weight-black': (isTransparent && isHomePage) && isCurrentRoute(item.route),
+                        'text-secondary': !isCurrentRoute(item.route) && (!isTransparent || !isHomePage),
                         'text-white': isTransparent && isHomePage
                       }"
-
-
-                    class="overline font-weight-bold rounded-lg"
+                    :icon="item.fab"
+                    class="overline font-weight-bold rounded-lg custom-btn"
+                    variant="text"
+                    @mouseleave="showText[index] = false"
+                    @mouseover="showText[index] = true"
                 >
-                    {{ item.title }}
+
+                    <span v-if="(!showText[index] && md && !isCurrentRoute(item.route)) || item.fab ">
+                        <v-icon :icon="item.icon"></v-icon>
+                    </span>
+                    <span v-else class="d-flex align-center justify-space-between">
+                        <v-icon v-if="md" :icon="item.icon" class="mr-1"></v-icon> {{ item.title }}
+                    </span>
+                    <v-tooltip v-if="(showText[index] && md) || item.fab" activator="parent" location="bottom">
+                        {{ item.title }}
+                    </v-tooltip>
+
                 </v-btn>
                 <transition name="fade">
-                    <v-responsive v-if="route().current(item.route)"
+                    <v-responsive v-if="isCurrentRoute(item.route)"
                                   :class="{
                                       'bg-white': isTransparent && isHomePage,
                                       'bg-gradient': !(isTransparent && isHomePage)
@@ -95,6 +113,7 @@ const back = () => {
             </div>
         </Link>
         <v-spacer></v-spacer>
+
         <Link :href="route('login')" class="text-decoration-none ">
             <v-btn :color="isTransparent && isHomePage ? 'white' : 'primary'"
                    class="rounded-md d-md-flex d-none white-outline"
@@ -156,5 +175,27 @@ custom-transition-enter-active, .custom-transition-leave-active {
 .custom-transition-enter-to, .custom-transition-leave {
     opacity: 1;
     transform: scale(1);
+}
+
+
+.custom-btn {
+}
+
+.custom-btn span {
+    white-space: nowrap;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.custom-btn:hover span {
+    opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 </style>
