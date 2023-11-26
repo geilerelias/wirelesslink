@@ -12,9 +12,9 @@ const vpnWidget = ref(null);
                     <iframe class="h-100 w-100" src="https://speed-test.es/"></iframe>
                 </section>-->
         <section style="height: 100vh">
-            <v-container class="mt-5">
-                <iframe class="h-100 w-100" src="https://wirelesslink.speedtestcustom.com/"></iframe>
-            </v-container>
+            <div class="mt-12 fill-height">
+                <iframe class="h-100 w-100" frameborder="0" src="https://wirelesslink.speedtestcustom.com/"></iframe>
+            </div>
         </section>
     </page-layout>
 </template>
