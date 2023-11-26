@@ -13,6 +13,11 @@ import Vuetify from "../plugins/vuetify.js";
 // importing AOS css style globally
 import 'aos/dist/aos.css'
 
+//PerfectScrollbar
+import PerfectScrollbar from 'vue3-perfect-scrollbar'
+import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
+
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -22,6 +27,7 @@ createInertiaApp({
             .use(plugin)
             .use(Vuetify)
             .use(createPinia())
+            .use(PerfectScrollbar)
             .use(ZiggyVue, Ziggy)
             .mount(el);
     },
