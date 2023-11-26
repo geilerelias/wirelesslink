@@ -50,10 +50,6 @@ Route::get('/speed-test', function () {
     return Inertia::render('SpeedTest');
 })->name('speed-test');
 
-Route::get('/project', function () {
-    return Inertia::render('Project');
-})->name('project');
-
 Route::get('/project/detail/{project}', function ($project) {
     return Inertia::render('ProjectDetail', ['project' => $project]);
 })->name('project-detail');
@@ -107,43 +103,59 @@ Route::get('/get/img/{folder}/{file?}', function ($folder, $file = null) {
     }
 });
 
-//listado de instituciones
+// Función para obtener dimensiones de una imagen
+function getImageDimensions($file_path): array
+{
+    list($width, $height) = getimagesize($file_path);
+    return ['width' => $width, 'height' => $height];
+}
+
+// Listado de instituciones
 Route::get('/get/list/projects', function () {
     $path = '/resources/images/projects/';
     $directory = base_path() . $path;
+
     try {
-        return json_encode(listadoDirectorio($directory));
+        $folder = listadoDirectorio($directory);
+        return response()->json($folder);
     } catch (Exception $e) {
-        echo 'Excepción capturada: ', $e->getMessage(), "\n";
+        return response()->json(['error' => $e->getMessage()], 500);
     }
-    return $directory;
 });
 
-function listadoDirectorio($directorio)
+function listadoDirectorio($directorio): array
 {
     $folder = array();
     $listado = scandir($directorio);
     unset($listado[array_search('.', $listado, true)]);
     unset($listado[array_search('..', $listado, true)]);
+
     if (count($listado) < 1) {
-        array_push($folder, 'directorio vacío');
+        return ['message' => 'directorio vacío'];
     }
+
     foreach ($listado as $elemento) {
+        $elementoPath = $directorio . '/' . $elemento;
 
-
-        if (is_dir($directorio . '/' . $elemento)) {
-
-            $array = array(
+        if (is_dir($elementoPath)) {
+            $array = [
                 'folder' => $elemento,
-                'sub' => listadoDirectorio($directorio . '/' . $elemento),
-            );
-            array_push($folder, $array);
+                'sub' => listadoDirectorio($elementoPath),
+            ];
+            $folder[] = $array;
         }
 
-        if (!is_dir($directorio . '/' . $elemento)) {
-            array_push($folder, $elemento);
+        if (!is_dir($elementoPath)) {
+            $imageDimensions = getImageDimensions($elementoPath);
+            $fileDetails = [
+                'url' => $elemento,
+                'width' => $imageDimensions['width'],
+                'height' => $imageDimensions['height'],
+            ];
+            $folder[] = $fileDetails;
         }
     }
 
     return $folder;
 }
+

@@ -16,6 +16,7 @@ import lazyBg1 from './../../images/bg/lazy-bg-1.png'
 import bg2 from './../../images/bg/bg-2.png'
 import name from "../../images/logo/name.png";
 import logo from "../../images/logo/logo.png";
+import Project from "@/Pages/Project.vue";
 
 
 const {mobile} = useDisplay()
@@ -254,6 +255,8 @@ const pilaresCorporativos = [
                 </v-container>
             </div>
         </div>
+
+        <project></project>
 
         <div class="bg-primary py-md-15 py-8">
             <div class="py-md-8 py-sm-5">

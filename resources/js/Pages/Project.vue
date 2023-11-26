@@ -1,6 +1,5 @@
 <script setup>
 
-import PageLayout from "@/Layouts/PageLayout.vue";
 import {onMounted, ref} from "vue";
 import LoadingComponent from "@/Components/LoadingComponent.vue";
 import {router} from '@inertiajs/vue3'
@@ -79,7 +78,7 @@ const getMessage = (folder) => {
 </script>
 
 <template>
-    <page-layout title="Galería de imágenes">
+    <section class="bg-accent" title="Galería de imágenes">
         <v-container class=" ">
             <v-row class=" align-center justify-md-space-between justify-center pb-5 pt-12">
                 <v-col class="v-col-md-7 v-col-12">
@@ -139,7 +138,7 @@ const getMessage = (folder) => {
                 </v-row>
             </v-container>
         </div>
-    </page-layout>
+    </section>
 </template>
 
 <style scoped>

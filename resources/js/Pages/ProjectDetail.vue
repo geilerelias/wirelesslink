@@ -2,35 +2,52 @@
 
 import PageLayout from "@/Layouts/PageLayout.vue";
 import {onMounted, ref} from "vue";
-import LoadingComponent from "@/Components/LoadingComponent.vue";
 import {usePage} from "@inertiajs/vue3";
 import {useDisplay} from "vuetify";
+
+import Gallery from './Gallery.vue';
+import SpinnerComponent from "@/Components/SpinnerComponent.vue";
+import LoadingComponent from "@/Components/LoadingComponent.vue";
 
 const {props} = usePage();
 const project = ref(props.project);
 const {mobile} = useDisplay()
 
 // Utilizar ref para almacenar los datos
+let processedImages = [];
+let isLoading = ref(true);
 const projects = ref([]);
-let selectedProject = ref([]);
-
-const fetchData = async () => {
-    try {
-        const response = await axios.get('/get/list/projects');
-        // Manejar la respuesta, por ejemplo, asignarla a una referencia
-        projects.value = response.data.find(item => item.folder === project.value);
-
-    } catch (error) {
-        // Manejar errores
-        console.error('Error al obtener la lista de proyectos', error);
-    }
-};
-
 
 // Llamar fetchData en el evento onMounted
 onMounted(() => {
     fetchData();
 });
+
+const fetchData = async () => {
+    try {
+        const response = await axios.get('/get/list/projects');
+        // Manejar la respuesta, por ejemplo, asignarla a una referencia
+        console.log(response.data)
+        projects.value = await response.data.find(item => item.folder === project.value);
+        console.log(projects.value)
+        const array = projects.value.sub
+        isLoading.value = false; // Set loading to false once processing is done
+        if (array.length > 0) {
+            processedImages = array.map(item => (
+                {
+                    url: `/get/img/${project.value}/${item.url}`,
+                    width: item.width,
+                    height: item.height,
+                }
+            ));
+        } else {
+            console.log('nada')
+        }
+    } catch (error) {
+        // Manejar errores
+        console.error('Error al obtener la lista de proyectos', error);
+    }
+};
 
 // Definir funciones para obtener título y mensaje según el folder
 const getTitle = (folder) => {
@@ -47,11 +64,12 @@ const getTitle = (folder) => {
         case 'panelsolar':
             return `
                 <span class="text-secondary  font-weight-light">
-                    Instalación de Paneles Solares para
+
+                    Innovación y Sostenibilidad
                 </span>
                 <br>
                 <span class="ml-16 font-weight-bold font-weight-black">
-                    Energía Limpia
+                    Instalación de Paneles Solares para Energía Fotovoltaica
                 </span>`;
         case 'telecomunicacion':
             return `
@@ -79,6 +97,8 @@ const getMessage = (folder) => {
             return 'Mensaje no definido para este proyecto';
     }
 };
+
+
 </script>
 
 <template>
@@ -103,27 +123,47 @@ const getMessage = (folder) => {
             </v-row>
         </v-container>
 
-
-        <div class="pt-md-10 border-top">
+        <div class=" border-top">
             <v-container>
-                <v-row>
-                    <v-col v-for="img in projects.sub" v-if="projects.sub && projects.sub.length > 0"
-                           class="v-col-sm-4 v-col-12">
-                        <div class="mb-sm-6">
-                            <v-card class="hover-card overflow-hidden lh-10 rounded-md position-relative">
+                <div v-if="isLoading">
+                    <v-row>
+                        <v-col
+                            v-for="n in processedImages"
+                            :key="n"
+                            class="d-flex child-flex"
+                            cols="4"
+                            md="3"
+                        >
+                            <v-skeleton-loader type="image"></v-skeleton-loader>
+                        </v-col>
 
-                                <v-img :src="`/get/img/${project}/${img}`"
-                                       class="zoom-in w-100"
-                                       cover="" style="height: 300px;">
-                                    <template v-slot:placeholder>
-                                        <loading-component></loading-component>
-                                    </template>
-                                </v-img>
+                        <v-col
+                            v-for="(image, n) in processedImages"
+                            :key="n"
+                            class="d-flex child-flex"
+                            cols="12"
+                            lg="3"
+                            md="4"
+                            sm="6"
+                        >
+                            <v-card
+                                :data-pswp-height="image.height"
+                                :data-pswp-width="image.width"
+                                :href="image.url"
+                                class="hover-card overflow-hidden rounded-md h-100"
+                                elevation="10"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                <loading-component></loading-component>
                             </v-card>
-                        </div>
-                    </v-col>
-                </v-row>
+                        </v-col>
+                    </v-row>
+                </div>
+                <Gallery v-else :images="processedImages" galleryID="my-test-gallery"/>
+
             </v-container>
+            <spinner-component :value="isLoading" text="Procesando imágenes"/>
         </div>
     </page-layout>
 </template>

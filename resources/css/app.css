@@ -18,7 +18,7 @@
 }
 
 .browse-category .hover-card .zoom-in {
-    transition: all .4s ease-in-out
+    transition: all .2s ease-in-out
 }
 
 .browse-category .hover-card:hover .zoom-in {
@@ -26,7 +26,7 @@
 }
 
 .hover-card .zoom-in {
-    transition: all .4s ease-in-out
+    transition: all .2s ease-in-out
 }
 
 .hover-card:hover .zoom-in {

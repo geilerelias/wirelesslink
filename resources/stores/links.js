@@ -37,13 +37,7 @@ export const useLinksStore = defineStore("links", {
                 text: 'Test de velocidad',
                 icon: 'mdi-speedometer',
                 route: "speed-test"
-            }, {
-                fab: true,
-                title: "Proyectos",
-                text: 'Imágenes de proyectos',
-                icon: 'mdi-folder-image',
-                route: "project"
-            },
+            }
         ],
     }),
 })

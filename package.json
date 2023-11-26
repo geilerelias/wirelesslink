@@ -29,6 +29,7 @@
         "aos": "^2.3.4",
         "chart.js": "^4.4.0",
         "chartjs-adapter-date-fns": "^3.0.0",
+        "photoswipe": "^5.4.2",
         "pinia": "^2.1.4",
         "vue-chartjs": "^5.2.0",
         "vuetify": "^3.4.3"
