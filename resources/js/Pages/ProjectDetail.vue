@@ -2,7 +2,7 @@
 
 import PageLayout from "@/Layouts/PageLayout.vue";
 import {onMounted, ref} from "vue";
-import {usePage} from "@inertiajs/vue3";
+import {router, usePage} from "@inertiajs/vue3";
 import {useDisplay} from "vuetify";
 
 import Gallery from './Gallery.vue';
@@ -17,19 +17,31 @@ const {mobile} = useDisplay()
 let processedImages = [];
 let isLoading = ref(true);
 const projects = ref([]);
+const value = ref(1)
+
+const listProject = [
+    {name: 'hidropaneles', icon: 'mdi-solar-panel', title: 'Hidropaneles'},
+    {name: 'panelsolar', icon: 'mdi-solar-power-variant', title: 'Paneles Solares'},
+    {name: 'telecomunicacion', icon: 'mdi-radio-tower', title: 'Telecomunicaciones'}
+];
+
+function redirect(projectFolder) {
+    router.get(`/project/detail/${projectFolder}`, projectFolder)
+}
 
 // Llamar fetchData en el evento onMounted
 onMounted(() => {
     fetchData();
+    value.value = listProject.findIndex(item => item.name === project.value);
 });
 
 const fetchData = async () => {
     try {
         const response = await axios.get('/get/list/projects');
         // Manejar la respuesta, por ejemplo, asignarla a una referencia
-        console.log(response.data)
+        //console.log(response.data)
         projects.value = await response.data.find(item => item.folder === project.value);
-        console.log(projects.value)
+        //console.log(projects.value)
         const array = projects.value.sub
         isLoading.value = false; // Set loading to false once processing is done
         if (array.length > 0) {
@@ -161,10 +173,19 @@ const getMessage = (folder) => {
                     </v-row>
                 </div>
                 <Gallery v-else :images="processedImages" galleryID="my-test-gallery"/>
-
+                <v-bottom-navigation
+                    v-model="value"
+                    :grow="true"
+                    color="primary"
+                >
+                    <v-btn v-for="item in listProject" @click="redirect(item.name)">
+                        <v-icon :icon="item.icon"></v-icon>
+                        {{ item.title }}
+                    </v-btn>
+                </v-bottom-navigation>
             </v-container>
-            <spinner-component :value="isLoading" text="Procesando imágenes"/>
         </div>
+        <spinner-component :value="isLoading" text="Procesando imágenes"/>
     </page-layout>
 </template>
 

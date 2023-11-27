@@ -128,7 +128,6 @@ const pilaresCorporativos = [
                             </div>
                             <p class="text-subtitle-1 ml-6">
                                 ¿Necesitas ayuda?
-                                Link
                                 <Link class="text-decoration-none" href="/contact-us">
                                     <a aria-current="page"
                                        class="router-link-active router-link-exact-active text-decoration-none text-primary">
